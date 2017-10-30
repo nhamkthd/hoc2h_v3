@@ -6,11 +6,13 @@ const cookieParser = require('cookie-parser');
 const bodyParser   = require('body-parser');
 const cors         = require('cors');
 const mongoose     = require('mongoose');
+const validator    = require('express-validator');
 
 const app = express();
 
 require('dotenv').config();
 mongoose.connect(process.env.DB_HOST);
+app.use(validator());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
