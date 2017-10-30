@@ -1,0 +1,8 @@
+<ul>
+  <li *ngFor="let error of errors">{{ error.msg }}</li>
+</ul>
+
+<input type="text" [(ngModel)]="username">
+<input type="text" [(ngModel)]="password">
+<button on-click="login()">Login</button>
+<a href="#" [routerLink]="['/auth/register']">Register</a>
