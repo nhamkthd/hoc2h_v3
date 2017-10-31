@@ -1,11 +1,13 @@
 #setup enviroment ubuntu
 
-# install npm, nodemon, @angular/cli
+# install npm, nodemon, @angular/cli, typescript
 sudo apt-get install npm
 
 sudo npm install nodemon -g
 
 npm install -g @angular/cli
+
+suto apt-get install typescript
 
 # install nodejs
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
@@ -38,3 +40,6 @@ run `ng serve` for a client dev. Navigate to `http://localhost:4200`.  The app w
 cd hoc2h
 
 Run `npm start` for a dev server. Navigate to `http://localhost:3000/`. The app will automatically reload if you change any of the source files.
+
+#nat port 80 to 3000
+sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
