@@ -2,11 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { AuthModule } from './auth/auth.module';
-import { LayoutModule } from './layout/layout.module';
 import { AppRoutingModule } from './app-routing.module';
-import { UserService } from './_services/user.service';
-import { AuthGuard } from './_guards/auth.guard';
+import { CoreModule } from './core/core.module'; 
 
 @NgModule({
   declarations: [
@@ -14,14 +11,9 @@ import { AuthGuard } from './_guards/auth.guard';
   ],
   imports: [
     BrowserModule,
-    AuthModule,
     AppRoutingModule,
-    LayoutModule
   ],
-  providers: [
-    UserService,
-    AuthGuard
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../_services/user.service';
+import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   passwordConfirmation: string;
   errors = [];
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
   }
@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
       password: this.password,
       passwordConfirmation: this.passwordConfirmation
     }
-    this.userService.register(data).then(res => {
+    this.authService.register(data).then(res => {
 
       if (res.status == 200) {
         localStorage.setItem('token', res.json().token);

@@ -5,7 +5,7 @@ import 'rxjs/add/operator/toPromise';
 import { environment } from '../../environments/environment';
 
 @Injectable()
-export class UserService {
+export class AuthService {
 
   private url =  environment.apiUrl;
 

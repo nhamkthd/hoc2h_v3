@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Injectable()
-export class AuthGuard {
+export class AdminGuard {
 
   constructor (private router: Router) {}
 
@@ -13,5 +13,4 @@ export class AuthGuard {
       return false;
     }
   }
-  
 }

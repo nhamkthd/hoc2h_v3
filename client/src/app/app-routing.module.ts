@@ -1,26 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from './_guards/auth.guard';
+import { AdminGuard } from './admin.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/dashboard',
-    pathMatch: 'full'
+    loadChildren: './admin/admin.module#AdminModule',
+    canActivate: [AdminGuard]
   },
   {
     path: 'auth',
     loadChildren: './auth/auth.module#AuthModule'
-  },
-  {
-    path: 'dashboard',
-    loadChildren: './layout/layout.module#LayoutModule',
-    canActivate: [AuthGuard]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true})],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+  providers: [AdminGuard]
 })
 export class AppRoutingModule { }
