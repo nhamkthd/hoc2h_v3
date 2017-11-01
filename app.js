@@ -19,13 +19,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'client/dist')));
+app.use(express.static(path.join(__dirname, '/client/dist')));
 app.use(cors());
 
 app.use('/api', require('./routes/api'));
 
 app.get('*', function (req, res) {
-  res.sendFile('index.html', {root: __dirname+ 'client/dist'});
+  res.sendFile('index.html', {root: __dirname+ '/client/dist'});
 });
 
 module.exports = app;
