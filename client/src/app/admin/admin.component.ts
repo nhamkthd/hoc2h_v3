@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 declare var $: any;
 
 @Component({
@@ -6,12 +6,21 @@ declare var $: any;
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent implements OnInit, OnDestroy {
+
+  bodyClasses = 'skin-blue sidebar-mini';
+  body: HTMLBodyElement = document.getElementsByTagName('body')[0];
 
   constructor() { }
 
   ngOnInit() {
-    $.widget.bridge('uibutton', $.ui.button);
+    this.body.classList.add('skin-blue');
+    this.body.classList.add('sidebar-mini');
+  }
+
+  ngOnDestroy() {
+    this.body.classList.remove('skin-blue');
+    this.body.classList.remove('sidebar-mini');
   }
 
 }

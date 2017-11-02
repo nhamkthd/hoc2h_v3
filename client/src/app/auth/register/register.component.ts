@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 declare var $: any;
@@ -8,7 +8,7 @@ declare var $: any;
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
 
   username: string;
   password: string;
@@ -16,6 +16,9 @@ export class RegisterComponent implements OnInit {
   errors = [];
 
   constructor(private authService: AuthService, private router: Router) {}
+
+  bodyClasses = 'skin-blue sidebar-mini';
+  body: HTMLBodyElement = document.getElementsByTagName('body')[0];
 
   ngOnInit() {
     $(function () {
@@ -25,6 +28,10 @@ export class RegisterComponent implements OnInit {
         increaseArea: '20%' /* optional */
       });
     });
+  }
+
+  ngOnDestroy() {
+    this.body.classList.remove('login-page');
   }
 
   register() {
