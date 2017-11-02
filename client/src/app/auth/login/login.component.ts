@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 declare var $: any;
@@ -10,15 +10,19 @@ declare var $: any;
     './login.component.css'
   ]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   username: string;
   password: string;
   errors = [];
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
+
+  bodyClasses = 'skin-blue sidebar-mini';
+  body: HTMLBodyElement = document.getElementsByTagName('body')[0];
 
   ngOnInit() {
+    this.body.classList.add('login-page');
     $(function () {
       $('input').iCheck({
         checkboxClass: 'icheckbox_square-blue',
@@ -26,6 +30,10 @@ export class LoginComponent implements OnInit {
         increaseArea: '20%' /* optional */
       });
     });
+  }
+
+  ngOnDestroy() {
+    this.body.classList.remove('login-page');
   }
 
   login() {
