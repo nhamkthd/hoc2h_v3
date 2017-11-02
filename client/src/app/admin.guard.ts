@@ -7,8 +7,9 @@ export class AdminGuard {
   constructor (private router: Router) {}
 
   canActivate () {
-    if (localStorage.getItem('token')) return true;
-    else {
+    if (localStorage.getItem('token')) {
+      return true;
+    } else {
       this.router.navigate(['/auth/login']);
       return false;
     }
