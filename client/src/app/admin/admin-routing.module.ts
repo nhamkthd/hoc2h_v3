@@ -1,3 +1,4 @@
+import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin.component';
@@ -5,7 +6,13 @@ import { AdminComponent } from './admin.component';
 const routes: Routes = [
   {
     path: '',
-    component: AdminComponent
+    component: AdminComponent,
+    children: [
+      {
+        path: '',
+        component: HomeComponent
+      }
+    ]
   }
 ];
 

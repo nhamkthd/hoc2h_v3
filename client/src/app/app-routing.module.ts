@@ -6,7 +6,6 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: './admin/admin.module#AdminModule',
-    canActivate: [AdminGuard]
   },
   {
     path: 'auth',
@@ -19,4 +18,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [AdminGuard]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
