@@ -43,3 +43,6 @@ Run `npm start` for a dev server. Navigate to `http://localhost:3000/`. The app 
 
 #nat port 80 to 3000
 sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
+
+# set user admin
+http://localhost:3000/api/auth/set-admin

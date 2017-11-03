@@ -7,16 +7,16 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class AuthService {
 
-  private url =  environment.apiUrl;
+  private url = environment.apiUrl;
 
-  constructor(private http: Http) {}
+  constructor(private http: Http) { }
 
   register(data) {
-    return this.http.post(this.url+ '/api/register', data).toPromise().then(res => res).catch(err => err);
+    return this.http.post(this.url + '/api/auth/register', data).toPromise().then(res => res).catch(err => err);
   }
 
   login(data) {
-    return this.http.post(this.url+ '/api/login', data).toPromise().then(res => res).catch(err => err);
+    return this.http.post(this.url + '/api/auth/login', data).toPromise().then(res => res).catch(err => err);
   }
 
 }
