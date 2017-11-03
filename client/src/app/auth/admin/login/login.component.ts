@@ -1,4 +1,4 @@
-import { AuthService } from './../../auth.service';
+import { AuthService } from '../../auth.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 declare var $: any;
@@ -45,9 +45,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.authService.login(data).then(res => {
 
       if (res.status === 200) {
-        console.log(res.json());
-        // localStorage.setItem('token', res.json().token);
-        // this.router.navigate(['/']);
+        localStorage.setItem('token', res.json().token);
+        this.router.navigate(['/']);
       } else {
         this.errors = res.json();
       }
