@@ -9,14 +9,14 @@ import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { UsersModule } from './users/users.module';
 import { CategoriesModule } from './categories/categories.module';
-import { TagsModule } from './tags/tags.module';
+import { PermissionsModule } from './permissions/permissions.module';
 @NgModule({
   imports: [
     CommonModule,
     AdminRoutingModule,
     UsersModule,
     CategoriesModule,
-    TagsModule
+    PermissionsModule
   ],
   declarations: [
     AdminComponent,

@@ -26,11 +26,11 @@ const routes: Routes = [
       },
       {
         path: 'permissions',
-        loadChildren: ''
+        loadChildren: './permissions/permissions.module#PermissionsModule'
       },
       {
         path: 'roles',
-        loadChildren: ''
+        loadChildren: './tags/tags.module#TagsModule'
       }
     ]
   }
