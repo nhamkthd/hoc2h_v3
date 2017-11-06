@@ -30,7 +30,7 @@ const routes: Routes = [
       },
       {
         path: 'roles',
-        loadChildren: './tags/tags.module#TagsModule'
+        loadChildren: './roles/roles.module#RolesModule'
       }
     ]
   }

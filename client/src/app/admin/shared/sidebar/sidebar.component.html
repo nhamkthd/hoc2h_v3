@@ -1,63 +1,29 @@
-<aside class="main-sidebar">
-  <!-- sidebar: style can be found in sidebar.less -->
-  <section class="sidebar">
-    <!-- Sidebar user panel -->
-    <div class="user-panel">
-      <div class="pull-left image">
-        <img src="assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-      </div>
-      <div class="pull-left info">
-        <p>Alexander Pierce</p>
-        <a href="#">
-          <i class="fa fa-circle text-success"></i> Online</a>
-      </div>
-    </div>
-    <!-- search form -->
-    <form action="#" method="get" class="sidebar-form">
-      <div class="input-group">
-        <input type="text" name="q" class="form-control" placeholder="Search...">
-        <span class="input-group-btn">
-          <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-            <i class="fa fa-search"></i>
-          </button>
-        </span>
-      </div>
-    </form>
-    <!-- /.search form -->
-    <!-- sidebar menu: : style can be found in sidebar.less -->
-    <ul class="sidebar-menu" data-widget="tree">
-      <li class="header">MAIN NAVIGATION</li>
-      <li routerLinkActive="active">
-        <a routerLink="/admin/users">
-          <i class="fa fa-users" aria-hidden="true"></i>
-          <span>Quản lý người dùng</span>
-        </a>
-      </li>
-      <li routerLinkActive="active">
-        <a routerLink="/admin/categories"> 
-          <i class="fa fa-th"></i>
-          <span>Quản lý danh mục</span>
-        </a>
-      </li>
-      <li  routerLinkActive="active">
-        <a routerLink="/admin/tags">
-          <i class="fa fa-tag" aria-hidden="true"></i>
-          <span>Quản lý tag</span>
-        </a>
-      </li>
-      <li  routerLinkActive="active">
-        <a routerLink="/admin/roles">
-          <i class="fa fa-key" aria-hidden="true"></i>
-          <span>Quản lý role</span>
-        </a>
-      </li>
-      <li  routerLinkActive="active">
-        <a routerLink="/admin/permissions">
-          <i class="fa fa-cog" aria-hidden="true"></i>
-          <span>Quản lý permission</span>
-        </a>
-      </li>
-    </ul>
-  </section>
-  <!-- /.sidebar -->
-</aside>
+
+<nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+  <ul class="nav nav-pills flex-column">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="home" routerLinkActive="active"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard<span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="users" routerLinkActive="active"><i class="fa fa-users" aria-hidden="true"></i> Quản lý người dùng</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="categories" routerLinkActive="active"><i class="fa fa-th-list" aria-hidden="true"></i> Quản lý danh mục</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="roles" routerLinkActive="active"><i class="fa fa-key" aria-hidden="true"></i> Quản lý Roles</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="permissions" routerLinkActive="active"><i class="fa fa-wifi" aria-hidden="true"></i> Quản lý permissions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="tags" routerLinkActive="active"><i class="fa fa-tags" aria-hidden="true"></i> Quản lý tags</a>
+    </li>
+  </ul>
+  <ul class="nav nav-pills flex-column">
+    
+    <li class="nav-item">
+      <a class="nav-link" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Đăng xuất</a>
+    </li>
+  </ul>
+</nav>
