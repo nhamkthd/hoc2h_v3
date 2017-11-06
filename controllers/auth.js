@@ -1,6 +1,4 @@
-const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-const bcrypt = require('bcrypt');
 
 module.exports = function (router) {
 
@@ -31,15 +29,11 @@ module.exports = function (router) {
 
     let user = new User();
     user.username = req.body.username;
-    user.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+    user.password = user.hashSync(req.body.password);
     user.role = 2;
     user.save(function (err, user) {
       if (user) {
-        let token = jwt.sign({
-          user: user
-        }, process.env.JWT_SECRET_KEY, {
-          expiresIn: 60 * 60
-        });
+        let token = user.signJwt(user.id);
         return res.status(200).json({
           token: token,
           user: user
@@ -69,12 +63,8 @@ module.exports = function (router) {
       username: req.body.username
     }, function (err, user) {
       if (user) {
-        if (bcrypt.compareSync(req.body.password, user.password)) {
-          let token = jwt.sign({
-            user: user
-          }, process.env.JWT_SECRET_KEY, {
-            expiresIn: 60 * 60
-          });
+        if (user.compareSync(req.body.password)) {
+          let token = user.signJwt(user.id);
           return res.status(200).json({
             token: token,
             user: user
