@@ -92,7 +92,7 @@ module.exports = function (router) {
       if (!err) {
         let user = new User();
         user.username = 'admin';
-        user.password = bcrypt.hashSync('1', bcrypt.genSaltSync(10));
+        user.password = user.hashSync('1');
         user.role = 1;
         user.save(function (err, user) {
 
