@@ -1,4 +1,3 @@
-import { MenuComponent } from './_shared/menu/menu.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminGuard } from './admin.guard';
@@ -17,12 +16,8 @@ const routes: Routes = [
     loadChildren: './test/test.module#TestModule'
   },
   {
-    path: 'question',
-    loadChildren: './question/question.module#QuestionModule'
-  },
-  {
     path: '',
-    component: MenuComponent
+    loadChildren: './question/question.module#QuestionModule'
   }
 ];
 
@@ -31,4 +26,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [AdminGuard]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
