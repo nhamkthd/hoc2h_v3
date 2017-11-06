@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -7,7 +8,8 @@ import { QuestionComponent } from './question.component';
 @NgModule({
   imports: [
     CommonModule,
-    QuestionRoutingModule
+    QuestionRoutingModule,
+    SharedModule
   ],
   declarations: [QuestionComponent]
 })

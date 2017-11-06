@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -7,8 +8,11 @@ import { TestComponent } from './test.component';
 @NgModule({
   imports: [
     CommonModule,
-    TestRoutingModule
+    TestRoutingModule,
+    SharedModule
   ],
-  declarations: [TestComponent]
+  declarations: [
+    TestComponent
+  ]
 })
 export class TestModule { }
