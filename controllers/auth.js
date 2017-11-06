@@ -5,8 +5,6 @@ module.exports = function (router) {
   // register
   router.post('/auth/register', function (req, res, next) {
 
-    console.log(req.headers);
-
     req.check('username', 'username khong duoc de trong').notEmpty();
     req.check('password', 'password khong duoc de trong').notEmpty();
     req.check('passwordConfirmation', 'passwordConfirmation khong duoc de trong').notEmpty();
@@ -92,7 +90,7 @@ module.exports = function (router) {
       if (!err) {
         let user = new User();
         user.username = 'admin';
-        user.password = bcrypt.hashSync('1', bcrypt.genSaltSync(10));
+        user.password = user.hashSync('1');
         user.role = 1;
         user.save(function (err, user) {
 
