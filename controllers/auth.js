@@ -5,6 +5,8 @@ module.exports = function (router) {
   // register
   router.post('/auth/register', function (req, res, next) {
 
+    console.log(req.headers);
+
     req.check('username', 'username khong duoc de trong').notEmpty();
     req.check('password', 'password khong duoc de trong').notEmpty();
     req.check('passwordConfirmation', 'passwordConfirmation khong duoc de trong').notEmpty();
