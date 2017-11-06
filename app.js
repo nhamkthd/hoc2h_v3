@@ -8,11 +8,10 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const validator = require('express-validator');
 const compression = require('compression');
-
 const app = express();
 
 require('dotenv').config();
-mongoose.connect(process.env.DB_HOST, { useMongoClient: true });
+mongoose.connect(process.env.DB_HOST, {useMongoClient: true});
 app.use(compression());
 app.use(validator());
 app.use(logger('dev'));
@@ -26,6 +25,24 @@ app.use('/api', require('./routes/api'));
 
 app.get('*', function (req, res) {
   res.sendFile('index.html', { root: __dirname + '/client/dist' });
+});
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
 });
 
 module.exports = app;

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -18,4 +19,4 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {}
