@@ -46,3 +46,18 @@ sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-po
 
 # set user admin
 http://localhost:3000/api/auth/set-admin
+
+
+## git flow, khi phat trien tinh nang moi
+
+git checkout develop
+git pull origin develop
+git checkout ten_nhanh (vd: huubv)
+git merge develop
+
+## code cac kieu xong
+git add .
+git commit -m 'comment'
+git push origin ten_nhanh (vd: huubv)
+
+## len git tao pull request tu nhanh cua minh vao nhanh develop
