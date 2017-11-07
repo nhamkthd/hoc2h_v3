@@ -24,12 +24,12 @@ app.use(cors());
 app.use('/api', require('./routes/api'));
 
 app.get('*', function (req, res) {
-  res.sendFile('index.html', { root: __dirname + '/client/dist' });
+  res.sendFile('index.html', {root: __dirname + '/client/dist'});
 });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  let err = new Error('Not Found');
   err.status = 404;
   next(err);
 });

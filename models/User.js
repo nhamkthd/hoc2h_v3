@@ -28,7 +28,7 @@ const User = new Schema({
 
 User.methods.signJwt = function (id) {
   return jwt.sign({
-    user: id
+    user_id: id
   }, process.env.JWT_SECRET_KEY);
 }
 
