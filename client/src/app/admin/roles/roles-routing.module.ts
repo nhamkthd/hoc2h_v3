@@ -4,7 +4,7 @@ import { RolesComponent } from './roles.component';
 
 const routes: Routes = [
   {
-    path : ' ',
+    path : '',
     component : RolesComponent,
     children : [
       {
