@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Token = require('./Token');
 
 const User = new Schema({
   username: String,
@@ -28,12 +27,7 @@ const User = new Schema({
 });
 
 User.methods.signJwt = function (id) {
-  let signToken = jwt.sign({user_id: id}, process.env.JWT_SECRET_KEY);
-  let token = new Token();
-  token.user_id = id;
-  token.token = signToken;
-  token.save();
-  return signToken;
+  return jwt.sign({user_id: id}, process.env.JWT_SECRET_KEY, {expiresIn: "1 days"});
 }
 
 User.methods.hashSync = function (password) {
