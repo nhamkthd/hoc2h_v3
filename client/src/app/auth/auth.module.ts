@@ -3,11 +3,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { SharedModule } from '../shared/shared.module';
 import { AuthRoutingModule } from './auth-routing.module';
 import { HttpModule } from '@angular/http';
 import { AuthService } from './auth.service';
 import { LoginComponent } from './admin/login/login.component';
-import { RegisterComponent } from './admin/register/register.component';
+import { RegisterComponent } from './user/register/register.component';
 import { LoginComponent as LoginUserComponent } from './user/login/login.component';
 
 @NgModule({
@@ -15,8 +16,9 @@ import { LoginComponent as LoginUserComponent } from './user/login/login.compone
     CommonModule,
     AuthRoutingModule,
     FormsModule,
-    HttpModule
-  ],
+    HttpModule,
+    SharedModule
+    ],
   declarations: [
     LoginComponent,
     RegisterComponent,

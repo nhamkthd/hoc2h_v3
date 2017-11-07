@@ -12,12 +12,17 @@ const routes: Routes = [
     loadChildren: './auth/auth.module#AuthModule'
   },
   {
-    path: 'test',
+    path: 'tests',
     loadChildren: './test/test.module#TestModule'
   },
   {
-    path: '',
+    path: 'questions',
     loadChildren: './question/question.module#QuestionModule'
+  },
+  {
+    path: '',
+    redirectTo: 'questions',
+    pathMatch: 'full'
   }
 ];
 
