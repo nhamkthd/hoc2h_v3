@@ -1,7 +1,6 @@
 import { AuthService } from '../../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +28,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(data).then(res => {
 
       if (res.status === 200) {
-        Cookie.set('token', res.json().token, 300000);
+        localStorage.setItem('token', res.json().token);
         this.router.navigate(['/']);
       } else {
         this.errors = res.json();
