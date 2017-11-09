@@ -2,10 +2,12 @@ const User = require('../models/User');
 
 module.exports = function (router) {
 
-  // register
-  router.post('/auth/register', function (req, res, next) {
+  // user register
+  router.post('/auth/user-register', function (req, res, next) {
 
     req.check('username', 'username khong duoc de trong').notEmpty();
+    req.check('email', 'email khong duoc de trong').notEmpty();
+    req.check('email', 'email khong dung dinh dang').isEmail();
     req.check('password', 'password khong duoc de trong').notEmpty();
     req.check('passwordConfirmation', 'passwordConfirmation khong duoc de trong').notEmpty();
     req.check('password', 'password khong trung khop').custom(value => {return value == req.body.passwordConfirmation});
@@ -13,9 +15,16 @@ module.exports = function (router) {
     User.findOne({username: req.body.username}, function (err, user) {
 
       if (user) req.check('username', 'username da ton tai').custom(value => {return false});
-      let errors = req.validationErrors();
-      if (errors) return res.status(422).json(errors);
-      return next();
+
+      User.findOne({email: req.body.email}, function (err, user) {
+
+        if (user) req.check('email', 'email da ton tai').custom(value => {return false});
+
+        let errors = req.validationErrors();
+        if (errors) return res.status(422).json(errors);
+        return next();
+
+      });
 
     });
 
@@ -23,6 +32,7 @@ module.exports = function (router) {
 
     let user = new User();
     user.username = req.body.username;
+    user.email = req.body.email;
     user.password = user.hashSync(req.body.password);
     user.role = 2;
     user.save(function (err, user) {
@@ -38,8 +48,8 @@ module.exports = function (router) {
 
   });
 
-  // login
-  router.post('/auth/login', function (req, res, next) {
+  // user login
+  router.post('/auth/user-login', function (req, res, next) {
 
     req.check('username', 'username khong duoc de trong').notEmpty();
     req.check('password', 'password khong duoc de trong').notEmpty();
@@ -50,7 +60,10 @@ module.exports = function (router) {
 
   }, function (req, res) {
 
-    User.findOne({username: req.body.username}, function (err, user) {
+    let query = User.findOne();
+    query.or([{username: req.body.username}, {email: req.body.username}]);
+    query.where({role: 2});
+    query.exec(function (err, user) {
 
       if (user) {
         if (user.compareSync(req.body.password)) {
@@ -68,7 +81,7 @@ module.exports = function (router) {
   });
 
   // admin login
-  router.post('/auth/admin/login', function (req, res, next) {
+  router.post('/auth/admin-login', function (req, res, next) {
 
     req.check('username', 'username khong duoc phep de trong').notEmpty();
     req.check('password', 'password khong duoc phep de trong').notEmpty();
@@ -99,9 +112,9 @@ module.exports = function (router) {
   // set user admin
   router.get('/auth/set-admin', function (req, res) {
 
-    User.findOne({username: 'admin'}, function (err, user) {
+    User.remove({}, function (err) {
 
-      if (! user) {
+      if (! err) {
 
         let user = new User();
         user.username = 'admin';
@@ -109,14 +122,12 @@ module.exports = function (router) {
         user.role = 1;
         user.save(function (err, user) {
 
-          if (user) return res.status(200).json('set user admin success');
+          if (user) return res.status(200).json('truncated users, set admin with account: admin, password: 1, role: 1');
           return res.status(401).json('set user admin error');
 
         });
 
       }
-
-      return res.status(401).json('user admin da ton tai');
 
     });
 
