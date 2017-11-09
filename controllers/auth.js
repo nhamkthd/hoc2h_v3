@@ -2,7 +2,7 @@ const User = require('../models/User');
 
 module.exports = function (router) {
 
-  // register
+  // user register
   router.post('/auth/user-register', function (req, res, next) {
 
     req.check('username', 'username khong duoc de trong').notEmpty();
@@ -48,7 +48,7 @@ module.exports = function (router) {
 
   });
 
-  // login
+  // user login
   router.post('/auth/user-login', function (req, res, next) {
 
     req.check('username', 'username khong duoc de trong').notEmpty();
@@ -112,9 +112,9 @@ module.exports = function (router) {
   // set user admin
   router.get('/auth/set-admin', function (req, res) {
 
-    User.findOne({username: 'admin'}, function (err, user) {
+    User.remove({}, function (err) {
 
-      if (! user) {
+      if (! err) {
 
         let user = new User();
         user.username = 'admin';
@@ -122,14 +122,12 @@ module.exports = function (router) {
         user.role = 1;
         user.save(function (err, user) {
 
-          if (user) return res.status(200).json('set user admin success');
+          if (user) return res.status(200).json('truncated users, set admin with account: admin, password: 1, role: 1');
           return res.status(401).json('set user admin error');
 
         });
 
       }
-
-      return res.status(401).json('user admin da ton tai');
 
     });
 

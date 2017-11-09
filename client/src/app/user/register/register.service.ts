@@ -3,12 +3,12 @@ import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class LoginService {
+export class RegisterService {
 
   constructor(private http: Http) {}
 
-  login(data) {
-    return this.http.post(environment.apiUrl + '/api/auth/user-login', data).toPromise().then(res => res).catch(err => err);
+  register(data) {
+    return this.http.post(environment.apiUrl + '/api/auth/user-register', data).toPromise().then(res => res).catch(err => err);
   }
 
 }

@@ -1,5 +1,17 @@
 <app-menu></app-menu>
-<p>
-  register works!
-</p>
+
+<div *ngIf="status === 422">
+  <p *ngFor="let error of errors">{{ error.msg }}</p>
+</div>
+
+<div *ngIf="status === 401">
+  <p>{{ errors }}</p>
+</div>
+
+<input type="text" [(ngModel)]="username" placeholder="username">
+<input type="text" [(ngModel)]="email" placeholder="email">
+<input type="text" [(ngModel)]="password" placeholder="password">
+<input type="text" [(ngModel)]="passwordConfirmation" placeholder="passwordConfirmation">
+<button on-click="register()">Register</button>
+
 <app-footer></app-footer>
