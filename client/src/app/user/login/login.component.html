@@ -1,0 +1,15 @@
+<app-menu></app-menu>
+
+<div *ngIf="status === 422">
+  <p *ngFor="let error of errors">{{ error.msg }}</p>
+</div>
+
+<div *ngIf="status === 401">
+  <p>{{ errors }}</p>
+</div>
+
+<input type="text" [(ngModel)]="username" (keyup.enter)="login()">
+<input type="text" [(ngModel)]="password" (keyup.enter)="login()">
+<button on-click="login()">Login</button>
+
+<app-footer></app-footer>
