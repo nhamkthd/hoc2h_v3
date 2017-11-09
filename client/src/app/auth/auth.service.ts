@@ -11,12 +11,28 @@ export class AuthService {
 
   constructor(private http: Http) { }
 
-  register(data) {
-    return this.http.post(this.url + '/api/auth/register', data).toPromise().then(res => res).catch(err => err);
+  /**
+   *
+   * @param data = {username: string, password: string, passwordConfirmation: string, email: string}
+   */
+  userRegister(data) {
+    return this.http.post(this.url + '/api/auth/user-register', data).toPromise().then(res => res).catch(err => err);
   }
 
-  login(data) {
-    return this.http.post(this.url + '/api/auth/login', data).toPromise().then(res => res).catch(err => err);
+  /**
+   *
+   * @param data = {username or email: string, password: string}
+   */
+  userLogin(data) {
+    return this.http.post(this.url + '/api/auth/user-login', data).toPromise().then(res => res).catch(err => err);
+  }
+
+  /**
+   *
+   * @param data = {username: string, password: string}
+   */
+  adminLogin(data) {
+    return this.http.post(this.url + '/api/auth/admin-login', data).toPromise().then(res => res).catch(err => err);
   }
 
 }

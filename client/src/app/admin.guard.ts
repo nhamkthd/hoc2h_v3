@@ -10,7 +10,7 @@ export class AdminGuard {
     if (localStorage.getItem('token')) {
       return true;
     } else {
-      this.router.navigate(['/auth/login']);
+      this.router.navigate(['/auth/admin/login']);
       return false;
     }
   }

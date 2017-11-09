@@ -8,7 +8,12 @@
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
-    <p *ngFor="let error of errors">{{ error.msg }}</p>
+    <div *ngIf="status == 422">
+      <p *ngFor="let error of errors">{{ error.msg }}</p>
+    </div>
+    <div *ngIf="status == 401">
+      <p>{{ errors }}</p>
+    </div>
 
     <!-- <form action="../../index2.html" method="post"> -->
       <div class="form-group has-feedback">

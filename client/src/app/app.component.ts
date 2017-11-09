@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     let socket: any;
-    socket = io('http://localhost:3000');
+    socket = io();
 
     setInterval(function () {
       socket.emit('refresh token', localStorage.getItem('token'));

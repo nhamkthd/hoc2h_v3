@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
   errors = [];
+  status: number;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -25,7 +26,9 @@ export class LoginComponent implements OnInit {
       username: this.username,
       password: this.password
     };
-    this.authService.login(data).then(res => {
+    this.authService.adminLogin(data).then(res => {
+
+      this.status = res.status;
 
       if (res.status === 200) {
         localStorage.setItem('token', res.json().token);

@@ -7,6 +7,8 @@ module.exports = function (server) {
 
   io.on('connection', function(socket) {
 
+    console.log('user connected');
+
     socket.on('refresh token', function (token) {
 
       if (token) {

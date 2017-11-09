@@ -7,7 +7,7 @@ import { LoginComponent as LoginUserComponent } from './user/login/login.compone
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'user',
     component: AuthComponent,
     children: [
       {
@@ -34,10 +34,16 @@ const routes: Routes = [
         component: LoginComponent
       },
       {
-        path: 'register',
-        component: RegisterComponent
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full'
       }
     ]
+  },
+  {
+    path: '',
+    redirectTo: 'user',
+    pathMatch: 'full'
   }
 ];
 
