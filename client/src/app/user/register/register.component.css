@@ -1,0 +1,10 @@
+.register-box {margin-top: 200px;}
+.panel-login {border: solid 2px rgb(170, 198, 241); border-radius: 3px;}
+.panel-heading {
+    padding: 10px;
+    background:#ecf0f1;
+}
+.panel-body {padding: 20px; margin-bottom: 10px;}
+.dont-have-account {float: right; font-size: 13px;margin-bottom: 20px;}
+.error-text {margin-bottom: 10px; color: red;}
+.form-check {margin-bottom: 10px;} 
