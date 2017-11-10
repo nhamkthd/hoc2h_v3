@@ -6,8 +6,8 @@
   <li><a href="#" routerLink="/register">Register</a></li>
   <li><button on-click="logout()">Logout</button></li>
 </ul> -->
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-primary">
-  <a class="navbar-brand text-white" href="#">Hoc2H</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <a class="navbar-brand text-white" href="#" routerLink="/">Hoc2H</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -19,7 +19,7 @@
       <li class="nav-item">
         <a class="nav-link text-white" href="#" routerLink="/test">Tests</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link text-white" href="#">Documents</a>
       </li>
       <li class="nav-item dropdown">
@@ -31,13 +31,16 @@
           <a class="dropdown-item" href="#">Another action</a>
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
-      </li>
+      </li> -->
     </ul>
   </div>
   <div>
     <ul class="navbar-nav pull-right">
         <li class="nav-item ">
             <a class="nav-link text-white" href="#" routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white" on-click="logout()" style="cursor:pointer">Logout</a>
         </li>
     </ul>
 </div>
