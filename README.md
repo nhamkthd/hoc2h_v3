@@ -61,3 +61,27 @@ git commit -m 'comment'
 git push origin ten_nhanh (vd: huubv)
 
 ## len git tao pull request tu nhanh cua minh vao nhanh develop
+
+# cach fix conflict
+git checkout develop
+git pull origin develop
+git checkout ten_nhanh
+git merge develop
+-> sua code
+git add .
+git commit -m 'comment'
+git push orgin ten_nhanh
+
+# install pm2
+sudo npm install pm2 -g
+
+cd hoc2h
+npm install
+sudo pm2 start ./bin/www --watch -i max
+sudo pm2 start socket.js --watch
+sudo pm2 startup
+sudo pm2 save
+
+cd hoc2h/client
+npm install
+npm start
