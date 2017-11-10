@@ -10,14 +10,7 @@ import * as io from 'socket.io-client';
 })
 export class HomeComponent implements OnInit {
 
-  name: string;
-
-  constructor(private router: Router) {
-    Object.observe(this, function(changes) {
-      //is triggering
-      console.log(changes);
-    });
-  }
+  constructor(private router: Router) {}
 
   ngOnInit() {
     let router;
