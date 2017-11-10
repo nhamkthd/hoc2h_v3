@@ -1,30 +1,22 @@
 const jwt = require('jsonwebtoken');
 const User = require('./models/User');
+const io = require('socket.io')(5000);
+require('dotenv').config();
 
-module.exports = function (server) {
+io.on('connection', function(socket) {
 
-  const io = require('socket.io')(server);
+  let token = socket.handshake.query.token;
 
-  io.on('connection', function(socket) {
+  socket.on('refresh token', function (token) {
 
-    socket.on('refresh token', function (token) {
-
-      if (token) {
-
-        jwt.verify(token, process.env.JWT_SECRET_KEY, function (err, decoded) {
-
-          if (decoded && decoded.exp - (Date.parse(Date()) / 1000) <= 5) {
-            let user = new User();
-            let token = user.signJwt(decoded.user_id);
-            io.to(socket.id).emit('refresh token', token);
-          }
-
-          if (err) {
-            io.to(socket.id).emit('destroy token');
-          }
-
-        });
-
+    jwt.verify(token, process.env.JWT_SECRET_KEY, function (err, decoded) {
+      if (decoded) {
+        let currentTime = Math.floor(Date.now() / 1000);
+        if (decoded.exp - currentTime <= 10) {
+          let user = new User();
+          let token = user.signJwt(decoded.user_id);
+          io.to(socket.id).emit('refresh token', token);
+        }
       } else {
         io.to(socket.id).emit('destroy token');
       }
@@ -33,4 +25,4 @@ module.exports = function (server) {
 
   });
 
-}
+});
