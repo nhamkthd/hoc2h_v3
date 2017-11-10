@@ -10,6 +10,8 @@ import * as io from 'socket.io-client';
 })
 export class HomeComponent implements OnInit {
 
+  name: string;
+
   constructor(private router: Router) {}
 
   ngOnInit() {
