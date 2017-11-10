@@ -1,6 +1,6 @@
 import { environment } from './../../../environments/environment.prod';
 import { Router } from '@angular/router';
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as io from 'socket.io-client';
 
 @Component({
@@ -8,12 +8,15 @@ import * as io from 'socket.io-client';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, OnChanges {
+export class HomeComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  name: string;
 
-  ngOnChanges() {
-
+  constructor(private router: Router) {
+    Object.observe(this, function(changes) {
+      //is triggering
+      console.log(changes);
+    });
   }
 
   ngOnInit() {
@@ -24,8 +27,12 @@ export class HomeComponent implements OnInit, OnChanges {
     socket = io(environment.socketUrl, {query: 'token=' + localStorage.getItem('token')});
 
     setInterval(function () {
-      socket.emit('refresh token', localStorage.getItem('token'));
-    }, 1000);
+      let token: string;
+      token = localStorage.getItem('token');
+      if (token !== null) {
+        socket.emit('refresh token', token);
+      }
+    }, 5000);
 
     socket.on('refresh token', function (token) {
       localStorage.setItem('token', token);
