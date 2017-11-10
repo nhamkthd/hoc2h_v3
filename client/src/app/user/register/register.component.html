@@ -1,9 +1,8 @@
-<app-menu></app-menu>
 <div class="container">
   <div class="row justify-content-center register-box">
     <div class="col-6">
       <div *ngIf="status === 422">
-        <div class="alert alert-danger" role="alert"  *ngFor="let error of errors">
+        <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
             {{ error.msg }}
           </div>
       </div>
@@ -16,7 +15,6 @@
           <div class="panel-title">Đăng Ký Tài Khoản</div>
         </div>
         <div class="panel-body">
-          <form>
             <small class="form-text error-text">Error text here..!</small>
             <div class="form-group">
 
@@ -47,10 +45,8 @@
               Đã có tài khoản!
               <a href="#" routerLink="/login">Đăng nhập</a>
             </div>
-          </form>
         </div>
       </div>
     </div>
   </div>
 </div>
-<app-footer></app-footer>
