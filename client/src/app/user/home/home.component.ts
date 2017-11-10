@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit, OnChanges {
 
     socket.on('destroy token', function(){
       localStorage.removeItem('token');
-      router.navigate(['/login']);
+      localStorage.removeItem('user');
     });
   }
 
