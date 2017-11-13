@@ -11,7 +11,9 @@ const compression = require('compression');
 const app = express();
 
 require('dotenv').config();
+mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DB_HOST, {useMongoClient: true});
+mongoose.connection.on('error', err => console.error(`MongoDB connection error: ${err}`));
 app.use(compression());
 app.use(validator());
 app.use(logger('dev'));
