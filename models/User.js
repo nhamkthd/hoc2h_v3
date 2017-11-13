@@ -27,7 +27,7 @@ const User = new Schema({
 });
 
 User.methods.signJwt = function (id) {
-  return jwt.sign({user_id: id}, process.env.JWT_SECRET_KEY, {expiresIn: 300});
+  return jwt.sign({user_id: id}, process.env.JWT_SECRET_KEY, {expiresIn: 24 * 60 * 60});
 }
 
 User.methods.hashSync = function (password) {
