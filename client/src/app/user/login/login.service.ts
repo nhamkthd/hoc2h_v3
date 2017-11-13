@@ -11,4 +11,8 @@ export class LoginService {
     return this.http.post(environment.apiUrl + '/api/auth/user-login', data).toPromise().then(res => res).catch(err => err);
   }
 
+  loginFacebook(data) {
+    return this.http.post(environment.apiUrl + '/api/auth/login-facebook', data).toPromise().then(res => res).catch(err => err);
+  }
+
 }

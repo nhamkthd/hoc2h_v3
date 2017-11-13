@@ -1,6 +1,41 @@
 const User = require('../models/User');
+const request = require('request-promise');
 
 module.exports = function (router) {
+
+  // login with facebook
+  router.post('/auth/login-facebook', function (req, res) {
+
+    let accessToken = req.body.accessToken;
+    let provider = req.body.provider;
+
+    let options = {
+      uri: 'https://graph.facebook.com/me?fields=email&access_token=' + accessToken,
+      method: 'GET'
+    };
+
+    request(options).then(response => {
+
+      let results = JSON.parse(response);
+
+      let user = new User();
+      user.provider_id = results.id;
+      user.provider_name = provider;
+      user.email = results.email;
+      user.save(function (err, user) {
+        if (user) {
+          let token = user.signJwt(user.id);
+          return res.status(200).json({token: token});
+        } else {
+          return res.status(401).json('add user fail');
+        }
+      });
+
+    }).catch(err => {
+      return res.status(401).json('access token khong hop le');
+    });
+
+  });
 
   // user register
   router.post('/auth/user-register', function (req, res, next) {
@@ -39,7 +74,7 @@ module.exports = function (router) {
 
       if (user) {
         let token = user.signJwt(user.id);
-        return res.status(200).json({token: token, user: user});
+        return res.status(200).json({token: token});
       }
 
       return res.status(401).json('dang ky that bai');
@@ -67,7 +102,7 @@ module.exports = function (router) {
       if (user) {
         if (user.compareSync(req.body.password)) {
           let token = user.signJwt(user.id);
-          return res.status(200).json({token: token, user: user});
+          return res.status(200).json({token: token});
         } else {
           return res.status(401).json('dang nhap that bai');
         }
@@ -98,7 +133,7 @@ module.exports = function (router) {
 
         if (user.role != 1 || ! user.compareSync(req.body.password)) return res.status(401).json('dang nhap that bai');
         let token = user.signJwt(user.id);
-        return res.status(200).json({token: token, user: user});
+        return res.status(200).json({token: token});
 
       }
 
