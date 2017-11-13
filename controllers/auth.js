@@ -62,7 +62,6 @@ module.exports = function (router) {
 
     let query = User.findOne();
     query.or([{username: req.body.username}, {email: req.body.username}]);
-    query.where({role: 2});
     query.exec(function (err, user) {
 
       if (user) {
