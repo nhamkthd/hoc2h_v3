@@ -10,6 +10,6 @@ export class CreateService {
     return this.http.get(environment.apiUrl + '/category').toPromise().then(res => res).catch(err => err);
   }
   createTest(data) {
-    return this.http.post(environment.apiUrl + '/category', data).toPromise().then(res => res).catch(err => err);
+    return this.http.post(environment.apiUrl + '/test', data).toPromise().then(res => res).catch(err => err);
   }
 }
