@@ -10,7 +10,7 @@
       <div *ngIf="status === 401">
         <p>{{ errors }}</p>
       </div>
-      <div class="panel panel-login">
+      <div class="panel card">
         <div class="panel-heading">
           <div class="panel-title">Đăng Ký Tài Khoản</div>
         </div>
@@ -34,13 +34,13 @@
             </div>
             <div class="form-check">
               <label class="form-check-label">
-                <input type="checkbox" class="form-check-input"> Đồng ý với quy định.
+                <input type="checkbox" class="form-check-input"><small> Đồng ý với quy định.</small>
               </label>
             </div>
             <button class="btn btn-success" on-click="register()">Đăng ký</button>
-            <button class="btn btn-social-facebook">Đăng ký qua facebook</button>
+            <button class="btn btn-info" (click)="onRegisterWithFacebook()">Đăng ký qua facebook</button>
             <br>
-            <hr class="div-line">
+            <div class="div-line"></div>
             <div class="dont-have-account">
               Đã có tài khoản!
               <a href="#" routerLink="/login">Đăng nhập</a>
