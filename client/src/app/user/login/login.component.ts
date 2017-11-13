@@ -1,6 +1,8 @@
+import { environment } from './../../../environments/environment';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
+declare var FB: any;
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,38 @@ export class LoginComponent implements OnInit {
 
   constructor(private loginService: LoginService, private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
+
+  loginFacebook() {
+
+    let loginService; loginService = this.loginService;
+    let errors; errors = this.errors;
+    let router; router = this.router;
+
+    FB.login(function(response) {
+      if (response.status === 'connected') {
+        let data;
+        data = {
+          accessToken: response.authResponse.accessToken,
+          provider: 'facebook'
+        };
+        loginService.loginFacebook(data).then(res => {
+
+          if (res.status === 200) {
+            localStorage.setItem('token', res.json().token);
+            router.navigate(['/']);
+          } else {
+            errors = res.json();
+          }
+
+        });
+      } else {
+        FB.login();
+      }
+    });
+
+  }
 
   login() {
 

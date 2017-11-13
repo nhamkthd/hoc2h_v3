@@ -1,4 +1,6 @@
+import { environment } from '../environments/environment';
 import { Component, OnInit } from '@angular/core';
+declare var initFacebook: any;
 
 @Component({
   selector: 'app-root',
@@ -10,6 +12,7 @@ export class AppComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    initFacebook(environment.appIdFacebook);
   }
 
 }
