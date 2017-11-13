@@ -38,6 +38,8 @@ input[type="url"]:focus,
 input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="color"]:focus,
+select:focus,
+select,
 .uneditable-input:focus {
   border-color: rgba(63, 95, 240, 0.8);
   outline: 0 none;
