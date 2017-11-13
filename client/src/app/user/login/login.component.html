@@ -11,7 +11,7 @@
               <p>{{errors}}</p>
           </div>
       </div>
-      <div class="panel panel-login">
+      <div class="panel card">
         <div class="panel-heading">
           <div class="panel-title">Đăng Nhập<param name="" value=""></div>
           <div class="forgot-password-text">
@@ -28,13 +28,13 @@
           </div>
           <div class="form-check">
             <label class="form-check-label">
-              <input type="checkbox" class="form-check-input">Ghi nhớ đăng nhập.
+              <input type="checkbox" class="form-check-input"><small>Ghi nhớ đăng nhập.</small> 
             </label>
           </div>
           <button class="btn btn-success" (click)="login()">Đăng nhập</button>
-          <button  class="btn btn-social-facebook" (click)="loginWithFacebook()">Đăng nhập bằng facebook</button>
+          <button  class="btn btn-info" (click)="loginWithFacebook()">Đăng nhập bằng facebook</button>
           <br>
-          <hr class="div-line">
+          <div class="div-line"></div>
           <div class="dont-have-account">
             Chưa có tài khoản!
             <a href="#" routerLink="/register">Đăng ký ngay</a>
