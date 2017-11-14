@@ -7,6 +7,7 @@
     System.config({
         "map": {
           "ng2-ckeditor": "npm:ng2-ckeditor",
+          'ng2-validation': 'npm:ng2-validation/bundles/ng2-validation.umd.js'
         },
         "packages": {
           "ng2-ckeditor": {

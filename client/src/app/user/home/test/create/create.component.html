@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row main-content">
+    <div class="col-10 offset-1 box">
+      <h3 class="text-center ">Tạo đề thi</h3>
+      <form (ngSubmit)="addTest()" #formCreate="ngForm">
+      <div class="row add-test-form">
+        <div class="col-12">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Tên đề trắc nhiệm" [(ngModel)]="test.title" name="title" [required] #title="ngModel">
+            <label *ngIf="title.errors?.required" class="text-danger">
+              Tiêu đề không được để trống
+            </label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="test.category_id" name="category">
+              <option value=0>Danh mục</option>
+              <option value=1>Kiến Thức THPT</option>
+              <option value=2>Kiến Thức THCS</option>
+              <option value=3>Công Nghệ Thông Tin</option>
+              <option value=4>Ngoại Ngữ</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="test.level" name="level">
+              <option value=0>Độ khó</option>
+              <option value=1>Dễ</option>
+              <option value=2>Trung bình</option>
+              <option value=3>Khó</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+           <input type="number" class="form-control" placeholder="Số câu hỏi" [(ngModel)]="test.numberOfQuestion" name="number">
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <input type="number" class="form-control" [(ngModel)]="test.time" placeholder="Thời gian (phút)" name="time">
+          </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+              <ckeditor [(ngModel)]="test.decriptions" name="description"></ckeditor> 
+           </div>           
+        </div>
+        <div class="col-12">
+          <div class="form-group text-center">
+            <button class="btn btn-danger" routerLink='/test'>Trở lại</button>
+            <button class="btn btn-info" [disabled]="!formCreate.form.valid">Tạo đề</button>
+          </div>
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>

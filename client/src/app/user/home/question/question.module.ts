@@ -16,7 +16,6 @@ import { AddQuestionComponent } from './add-question/add-question.component';
   ],
   declarations: [HomeComponent, AddQuestionComponent],
   exports: [
-    
   ]
 })
 export class QuestionModule { }

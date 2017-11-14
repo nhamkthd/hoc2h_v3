@@ -8,13 +8,12 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class AddQuestionComponent implements OnInit {
-  question_body:string;
-  constructor() { 
-  
+  question_body: string;
+  constructor() {
   }
 
   ngOnInit() {
-    this.question_body = "<p>Nội dung câu hỏi</p>";
+    this.question_body = '<p>Nội dung câu hỏi</p>';
   }
 
 
