@@ -14,6 +14,7 @@ export class AddQuestionComponent implements OnInit {
 
   ngOnInit() {
     this.question_body = '<p>Nội dung câu hỏi</p>';
+    console.log(1);
   }
 
 
