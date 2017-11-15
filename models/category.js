@@ -7,3 +7,5 @@ const Category = new Schema({
   decriptions: String,
   order_display: Number
 });
+
+module.export = mongoose.module('Category',Category);
