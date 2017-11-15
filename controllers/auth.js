@@ -109,7 +109,6 @@ module.exports = function (router) {
       } else {
         return res.status(401).json('username khong ton tai');
       }
-
     });
 
   });

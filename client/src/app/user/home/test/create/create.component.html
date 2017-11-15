@@ -6,8 +6,8 @@
       <div class="row add-test-form">
         <div class="col-12">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Tên đề trắc nhiệm" [(ngModel)]="test.title" name="title" [required] #title="ngModel">
-            <label *ngIf="title.errors?.required" class="text-danger">
+            <input type="text" class="form-control" placeholder="Tên đề trắc nhiệm" [(ngModel)]="test.title" name="title" required #title="ngModel">
+            <label [hidden]="title?.valid || title?.pristine" class="text-danger">
               Tiêu đề không được để trống
             </label>
           </div>
