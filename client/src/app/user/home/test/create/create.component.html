@@ -14,44 +14,69 @@
         </div>
         <div class="col-6">
           <div class="form-group">
-            <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="test.category_id" name="category">
-              <option value=0>Danh mục</option>
-              <option value=1>Kiến Thức THPT</option>
-              <option value=2>Kiến Thức THCS</option>
-              <option value=3>Công Nghệ Thông Tin</option>
-              <option value=4>Ngoại Ngữ</option>
+            <select class="form-control" required id="exampleFormControlSelect1" [(ngModel)]="test.category_id" name="category" #category="ngModel">
+              <option value="">Danh mục</option>
+              <option *ngFor="let c of categorys" value={{c._id}}>{{c.name}}</option>
             </select>
+            <label [hidden]="category?.valid || category?.pristine" class="text-danger">
+              Danh mục không được để trống
+            </label>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
-            <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="test.level" name="level">
-              <option value=0>Độ khó</option>
+            <select class="form-control" #level="ngModel" required id="exampleFormControlSelect1" [(ngModel)]="test.level" name="level">
+              <option value="">Độ khó</option>
               <option value=1>Dễ</option>
               <option value=2>Trung bình</option>
               <option value=3>Khó</option>
             </select>
+            <label [hidden]="level?.valid || level?.pristine" class="text-danger">
+              Độ khó không được để trống
+            </label>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
-           <input type="number" class="form-control" placeholder="Số câu hỏi" [(ngModel)]="test.numberOfQuestion" name="number">
+           <input type="number" required min="1" max="255"  class="form-control" placeholder="Số câu hỏi" [(ngModel)]="test.numberOfQuestion" name="number" #number="ngModel">
+           <div *ngIf="number.errors && (number.dirty || number.touched)">
+           <label [hidden]="!number?.errors?.required" class="text-danger">
+             Số câu hỏi không được để trống
+          </label>
+          <label [hidden]="!number?.errors?.min" class="text-danger">
+            Số câu hỏi phải lớn hơn 0
+          </label>
+          <label [hidden]="!number?.errors?.max" class="text-danger">
+            Số câu hỏi quá nhiều
+          </label>
+          </div>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
-            <input type="number" class="form-control" [(ngModel)]="test.time" placeholder="Thời gian (phút)" name="time">
+            <input type="number" required min="1" max="255" class="form-control" [(ngModel)]="test.time" placeholder="Thời gian (phút)" #time="ngModel" name="time">
+            <div *ngIf="time.errors && (time.dirty || time.touched)">
+              <label [hidden]="!time?.errors?.required" class="text-danger">
+                Thời gian không được để trống
+             </label>
+             <label [hidden]="!time?.errors?.min" class="text-danger">
+                Thời gian phải lớn hơn 0
+             </label>
+             <label [hidden]="!time?.errors?.max" class="text-danger">
+                Thời gian quá nhiều
+             </label>
+             </div>
           </div>
         </div>
         <div class="col-12">
             <div class="form-group">
-              <ckeditor [(ngModel)]="test.decriptions" name="description"></ckeditor> 
-           </div>           
+              <ckeditor [(ngModel)]="test.decriptions" name="description"></ckeditor>
+           </div>
         </div>
         <div class="col-12">
           <div class="form-group text-center">
             <button class="btn btn-danger" routerLink='/test'>Trở lại</button>
-            <button class="btn btn-info" [disabled]="!formCreate.form.valid">Tạo đề</button>
+            <button class="btn btn-info"  [disabled]="!formCreate.form.valid">Tạo đề</button>
           </div>
         </div>
       </div>

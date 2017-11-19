@@ -1,12 +1,12 @@
 export class Test {
     id: number;
     title: string;
-    category_id: number;
+    category_id: string;
     time: number;
     numberOfQuestion: number;
     decriptions: string;
     status: number;
-    level: number;
+    level: string;
     constructor(
     ) { }
 }

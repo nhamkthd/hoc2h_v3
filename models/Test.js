@@ -5,7 +5,7 @@ const Test = new Schema({
   user_id: String,
   title: String,
   category_id: String,
-  times:number,
+  times:Number,
   number_of_question:Number,
   description:String,
   state:Number,
