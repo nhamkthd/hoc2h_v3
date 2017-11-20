@@ -10,7 +10,7 @@ import { Test } from '../../model/test';
   providers: [ ListService]
 })
 export class ListComponent implements OnInit {
-  tests= [new Test];
+  tests= [];
   constructor(private listservice: ListService) { }
 
   ngOnInit() {

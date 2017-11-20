@@ -18,7 +18,7 @@ const User = new Schema({
     local: String,
     phone: Number,
     birthday: Date,
-    avatar: String,
+    avatar: {type:String,default:"http://i.imgur.com/kHn39EY.jpg"},
     coins: Number,
     reputations: Number,
     introduction: String
