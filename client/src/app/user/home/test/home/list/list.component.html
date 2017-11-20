@@ -1,0 +1,14 @@
+<div class="row" *ngFor="let test of tests">
+    <div class="col-1">
+      <img src="http://i.imgur.com/kHn39EY.jpg" class="img-thumbnail">
+    </div>
+    <div class="col">
+        <a class="title-hyperlink" href="/tests/show/{{test._id}}">{{test.title}}</a>
+        <div class="mic-info">
+        Đăng bởi <a style="color: #2bbbad;" >Tuấn Anh</a> tại
+        <a href="#"><span class="orange-text"> Ngoại Ngữ </span></a>
+        <span class="date-created"><i class="fa fa-clock-o" aria-hidden="true"></i>{{test.created_at}}</span>
+        <span class="orange-text">1 lượt tham gia</span>
+        </div>
+    </div>
+  </div>

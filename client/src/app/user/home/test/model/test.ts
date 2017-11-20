@@ -1,5 +1,5 @@
 export class Test {
-    id: number;
+    _id: number;
     title: string;
     category_id: string;
     time: number;
@@ -7,6 +7,7 @@ export class Test {
     decriptions: string;
     status: number;
     level: string;
+    created_at: Date;
     constructor(
     ) { }
 }
