@@ -2,6 +2,7 @@ import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CreateComponent } from './create/create.component';
+import { TestGuard } from './test.guard';
 
 const routes: Routes = [
   {
@@ -10,12 +11,14 @@ const routes: Routes = [
   },
   {
     path: 'add-test',
-    component: CreateComponent
+    component: CreateComponent,
+    canActivate: [TestGuard]
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [TestGuard]
 })
 export class TestRoutingModule { }
