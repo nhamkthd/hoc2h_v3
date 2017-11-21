@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {ListQuestionsComponent} from './list-questions/list-questions.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
