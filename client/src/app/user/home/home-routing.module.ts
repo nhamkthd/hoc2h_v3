@@ -8,13 +8,14 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       {
-        path: '',
+        path: 'question',
         loadChildren: 'app/user/home/question/question.module#QuestionModule'
       },
       {
         path: 'test',
         loadChildren: 'app/user/home/test/test.module#TestModule'
-      }
+      },
+      { path: '', redirectTo: 'question', pathMatch: 'full' }
     ]
   }
 ];

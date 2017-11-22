@@ -2,6 +2,7 @@ import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {AddQuestionComponent} from './add-question/add-question.component';
+import {QuestionDetailComponent} from './question-detail/question-detail.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path:'add-question',
     component:AddQuestionComponent
+  },
+  {
+    path:'detail/:id',
+    component:QuestionDetailComponent
   }
 ];
 

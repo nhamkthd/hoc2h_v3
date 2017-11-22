@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-
+import {CategoryService} from '../../category.service';
 
 @Component({
   selector: 'app-add-question',
@@ -9,7 +9,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class AddQuestionComponent implements OnInit {
   question_body: string;
-  constructor() {
+  constructor(private categoryService:CategoryService) {
   }
 
   ngOnInit() {
