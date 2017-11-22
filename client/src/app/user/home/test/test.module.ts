@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { CreateComponent } from './create/create.component';
 import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
+import { ListComponent } from './home/list/list.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { CustomFormsModule } from 'ng2-validation';
     FormsModule,
     CustomFormsModule
   ],
-  declarations: [HomeComponent, CreateComponent]
+  declarations: [HomeComponent, CreateComponent, ListComponent]
 })
 export class TestModule { }

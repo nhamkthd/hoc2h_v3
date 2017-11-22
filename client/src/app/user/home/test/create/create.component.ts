@@ -13,14 +13,15 @@ export class CreateComponent implements OnInit {
 
   constructor(private createService: CreateService, private router: Router) { }
   test= new Test();
+  categorys= [];
   ngOnInit() {
-    this.test.level = 0;
-    this.test.category_id = 0;
+    this.test.level = '';
+    this.test.category_id = '';
     this.createService.getCategory().then(res => {
-      console.log(res);
+      this.categorys = res.json();
     });
   }
   public addTest() {
-    console.log(this.test);
+    this.createService.createTest(this.test);
   }
 }
