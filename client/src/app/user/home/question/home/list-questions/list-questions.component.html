@@ -6,15 +6,15 @@
           <div class="votes">
             <div class="counts">
               <span title="12 votes">
-                12
+                {{votes_count}}
               </span>
               <div>votes</div>
             </div>
           </div>
-          <div class="answers">
+          <div class="answers" [ngClass]="{'answered':answers_count > 0}">
             <div class="counts">
               <span title="12 answers">
-                10
+                {{answers_count}}
               </span>
               <div>answers</div>
             </div>
@@ -22,7 +22,7 @@
           <div class="views">
             <div class="counts">
               <span title="122 views">
-                122
+                {{views_count}}
               </span>
               <div>views</div>
             </div>
@@ -30,7 +30,7 @@
         </div>
         <div class="summary">
           <h3>
-            <a class="question-hyperlink">
+            <a class="question-hyperlink" href="#" routerLink="/question/detail/{{1}}">
               Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis?
             </a>
           </h3>
@@ -40,14 +40,14 @@
             <a class="tag-post">ios application</a>
           </div>
           <div class="started">
-            <a class="started-link">
+            <div class="started-link">
               Asked by 
-              <a class="asker-name">
+              <a class="asker-name" href="#">
                 Aries92
               </a>
               at
               <span class="created-time">12h00</span>
-            </a>
+            </div>
           </div>
         </div>
       </div>

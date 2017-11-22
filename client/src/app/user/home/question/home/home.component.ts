@@ -8,8 +8,13 @@ import {ListQuestionsComponent} from './list-questions/list-questions.component'
 export class HomeComponent implements OnInit {
 
   constructor() { }
-
+  tab:number;
   ngOnInit() {
+    this.tab = 1;
+  }
+  
+  setSelectedTab(tab:number){
+    this.tab = tab;
   }
 
 }
