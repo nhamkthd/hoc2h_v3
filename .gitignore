@@ -7,3 +7,4 @@ client/node_modules
 client/dist
 
 .vscode
+client/src/assets/.DS_Store
