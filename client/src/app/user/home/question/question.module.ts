@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {CKEditorModule} from 'ng2-ckeditor';
-
+import {CategoryService} from '../category.service';
 import { SharedModule } from '../../shared/shared.module';
 import { QuestionRoutingModule } from './question-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -16,6 +16,7 @@ import { AddQuestionComponent } from './add-question/add-question.component';
   ],
   declarations: [HomeComponent, AddQuestionComponent],
   exports: [
-  ]
+  ],
+  providers:[CategoryService]
 })
 export class QuestionModule { }
