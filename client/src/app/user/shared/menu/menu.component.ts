@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class MenuComponent implements OnInit {
 
   constructor(private router: Router) { }
-
+    user: any;
   ngOnInit() {
   }
 

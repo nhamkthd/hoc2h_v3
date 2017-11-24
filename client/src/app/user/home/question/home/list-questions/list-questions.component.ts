@@ -7,9 +7,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class ListQuestionsComponent implements OnInit {
-  answers_count:number;
-  votes_count:number;
-  views_count:number;
+  answers_count: number;
+  votes_count: number;
+  views_count: number;
   constructor() { }
 
   ngOnInit() {

@@ -3,7 +3,7 @@ import { ListService } from './list.service';
 import { Test } from '../../model/test';
 
 @Component({
-  selector: 'app-list',
+  selector: 'app-list-test',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
   encapsulation: ViewEncapsulation.None,

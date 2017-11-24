@@ -1,5 +1,6 @@
 const Test = require('../models/Test');
 const User = require('../models/User');
+const Category = require('../models/Category');
 const jwt = require('jsonwebtoken');
 
 module.exports = function (router) {
@@ -38,7 +39,7 @@ module.exports = function (router) {
 
     });
     router.get('/test', function (req, res) {
-        Test.find({}).populate('user').exec(function (error, tests) {
+        Test.find({}).populate('user').populate('category').exec(function (error, tests) {
             if (tests) return res.status(200).json(tests);
             return res.status(500).json('error');
         });
