@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
+const Test = require('./Test');
 const Schema = mongoose.Schema;
 
 const User = new Schema({
@@ -23,6 +24,15 @@ const User = new Schema({
     reputations: Number,
     introduction: String
   }
+
+});
+
+User.virtual('tests', {
+
+  ref: 'Test',
+  localField: '_id',
+  foreignField: 'user_id',
+  justOne: false
 
 });
 

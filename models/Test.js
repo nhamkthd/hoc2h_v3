@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const User = require('./User');
 const Schema = mongoose.Schema;
 
 const Test = new Schema({
@@ -16,6 +17,24 @@ const Test = new Schema({
   questions:[{question_id:String}],
   user_test:[{
     user_test_id:String,
-  }]
+  }],
+  user_rate:[{
+    user_rate_id:String,
+  }],
+  views: {type:Number , default : 0}
+}, { toJSON: { virtuals: true } });
+
+Test.virtual('user', {
+    ref: 'User',
+    localField: 'user_id',
+    foreignField: '_id',
+    justOne: false
 });
+Test.virtual('category', {
+  ref: 'Category',
+  localField: 'category_id',
+  foreignField: '_id',
+  justOne: false
+});
+
 module.exports = mongoose.model('Test', Test);

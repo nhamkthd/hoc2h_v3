@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Test } from '../model/test';
 import { CreateService } from './create.service';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -23,5 +23,6 @@ export class CreateComponent implements OnInit {
   }
   public addTest() {
     this.createService.createTest(this.test);
+    this.router.navigate(['/test']);
   }
 }

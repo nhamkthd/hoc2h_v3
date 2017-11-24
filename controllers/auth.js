@@ -102,7 +102,7 @@ module.exports = function (router) {
       if (user) {
         if (user.compareSync(req.body.password)) {
           let token = user.signJwt(user.id);
-          return res.status(200).json({token: token});
+          return res.status(200).json({token: token,user:user});
         } else {
           return res.status(401).json('dang nhap that bai');
         }
@@ -132,7 +132,7 @@ module.exports = function (router) {
 
         if (user.role != 1 || ! user.compareSync(req.body.password)) return res.status(401).json('dang nhap that bai');
         let token = user.signJwt(user.id);
-        return res.status(200).json({token: token});
+        return res.status(200).json({token: token,user:user});
 
       }
 

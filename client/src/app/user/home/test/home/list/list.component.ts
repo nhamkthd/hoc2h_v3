@@ -3,20 +3,25 @@ import { ListService } from './list.service';
 import { Test } from '../../model/test';
 
 @Component({
-  selector: 'app-list',
+  selector: 'app-list-test',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
   encapsulation: ViewEncapsulation.None,
-  providers: [ ListService]
+  providers: [ListService]
 })
 export class ListComponent implements OnInit {
-  tests= [];
+  tests = [];
+  users: any;
   constructor(private listservice: ListService) { }
 
   ngOnInit() {
     this.listservice.getall().then(res => {
       this.tests = res.json();
     });
+  }
+
+  getAuthor(user_id) {
+    return user_id;
   }
 
 }

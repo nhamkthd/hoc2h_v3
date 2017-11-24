@@ -8,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   constructor() { }
-
+  tab: String;
   ngOnInit() {
+    this.tab = 'new';
   }
-
+  setSelectedTab(tab) {
+    this.tab = tab;
+  }
 }
