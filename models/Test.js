@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const User = require('./User');
 const Schema = mongoose.Schema;
 
 const Test = new Schema({
@@ -17,5 +18,13 @@ const Test = new Schema({
   user_test:[{
     user_test_id:String,
   }]
+}, { toJSON: { virtuals: true } });
+
+Test.virtual('user', {
+    ref: 'User',
+    localField: 'user_id',
+    foreignField: '_id',
+    justOne: false
 });
+
 module.exports = mongoose.model('Test', Test);

@@ -5,7 +5,7 @@
     <div class="col">
         <a class="title-hyperlink" href="/tests/show/{{test?._id}}">{{test.title}}</a>
         <div class="mic-info">
-        Đăng bởi <a style="color: #2bbbad;" >Tuấn Anh</a> tại
+        Đăng bởi <a style="color: #2bbbad;" >{{ test?.user[0]?.username }}</a> tại
         <a href="#"><span class="orange-text"> Ngoại Ngữ </span></a>
         <span class="date-created"><i class="fa fa-clock-o" aria-hidden="true"></i>{{test.created_at}}</span>
         <span class="orange-text">1 lượt tham gia</span>
